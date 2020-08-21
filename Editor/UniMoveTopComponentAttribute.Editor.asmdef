@@ -1,0 +1,17 @@
+{
+    "name": "UniMoveTopComponentAttribute.Editor",
+    "references": [
+        "GUID:87362c9a5bb73b342a400b3ee7487604"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
