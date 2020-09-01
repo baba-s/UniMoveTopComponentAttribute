@@ -13,7 +13,13 @@ namespace Kogane.Internal
 
 		static MoveTopComponentAttributeUtils()
 		{
-			Selection.selectionChanged += OnSelectionChanged;
+			ObjectFactory.componentWasAdded += OnComponentWasAdded;
+			Selection.selectionChanged      += OnSelectionChanged;
+		}
+
+		private static void OnComponentWasAdded( Component component )
+		{
+			Move( component );
 		}
 
 		private static void OnSelectionChanged()
@@ -25,14 +31,19 @@ namespace Kogane.Internal
 
 			foreach ( var monoBehaviour in monoBehaviours )
 			{
-				var type       = monoBehaviour.GetType();
-				var attributes = type.GetCustomAttributes( ATTRIBUTE_TYPE, true );
+				Move( monoBehaviour );
+			}
+		}
 
-				if ( attributes.Length <= 0 ) continue;
+		private static void Move( Component component )
+		{
+			var type       = component.GetType();
+			var attributes = type.GetCustomAttributes( ATTRIBUTE_TYPE, true );
 
-				while ( ComponentUtility.MoveComponentUp( monoBehaviour ) )
-				{
-				}
+			if ( attributes.Length <= 0 ) return;
+
+			while ( ComponentUtility.MoveComponentUp( component ) )
+			{
 			}
 		}
 	}
